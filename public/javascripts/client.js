@@ -22,24 +22,28 @@ $(document).ready(function () {
     //on keystroke "enter," get text input value and append to ul;
     //empties text box, sends console.log with item name to server
     $("input").keypress(function (e) {
+
         if (e.which == 13) {
-            var formData = $("input:text").serialize();
-            console.log(formData);
+            var formData = $("input").val();
+            console.log("This is the form data: ", formData);
+
             $.ajax({
                 type: "POST",
                 url: "/shopping/add",
-                dataType: "json",
+                dataType: "text",
                 data: formData
             }).done(function (response){
                 console.log("Got a response!", response);
                 getData();
             });
-            $.ajax({
-                type: "GET",
-                url: "/shopping/" + formData
-            }).done(function(response){
-                console.log("This is the response: ", response);
-            });
+            var getData = function(){
+                $.ajax({
+                    type: "GET",
+                    url: "/shopping/" + formData
+                }).done(function(response){
+                    console.log("This is the response: ", response);
+                });
+            };
 
             var $text = $("input:text");
             //sendNoteToServer();
