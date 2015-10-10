@@ -23,7 +23,7 @@ $(document).ready(function () {
     //empties text box, sends console.log with item name to server
     $("input").keypress(function (e) {
         if (e.which == 13) {
-            var formData = $("input:text").serialize();
+            var formData = $("input:text").val();
             console.log(formData);
             $.ajax({
                 type: "POST",
