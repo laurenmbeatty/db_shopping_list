@@ -5,7 +5,7 @@ var todo = require("../models/shoppingModel.js");
 //TODO need to GET POST DELETE
 
 router.post('/add', function(request, response, next){
-    var listItem =new todo(req.body);
+    var listItem =new todo(request.body);
     listItem.save(function(err){
         if(err){
             console.log("Post", err);
