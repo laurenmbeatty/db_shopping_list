@@ -23,16 +23,24 @@ $(document).ready(function () {
     //empties text box, sends console.log with item name to server
     $("input").keypress(function (e) {
         if (e.which == 13) {
-            var formData = $("input:text").val();
+            var formData = $("input:text").serialize();
             console.log(formData);
             $.ajax({
                 type: "POST",
                 url: "/shopping/add",
-                dataType: "text",
+                dataType: "json",
                 data: formData
             }).done(function (response){
-                console.log('Success!');
+                console.log("Got a response!", response);
+                getData();
             });
+            $.ajax({
+                type: "GET",
+                url: "/shopping/" + formData
+            }).done(function(response){
+                console.log("This is the response: ", response);
+            });
+
             var $text = $("input:text");
             //sendNoteToServer();
             var $newListItem = $("<li class='sortableItem'>" + "<button class='btn-xs check-box'>" +
@@ -53,4 +61,5 @@ $(document).ready(function () {
             return false;
         }
     });
+
 });
