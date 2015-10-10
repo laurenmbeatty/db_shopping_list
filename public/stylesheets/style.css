@@ -1,0 +1,75 @@
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+body {
+  font-family: 'Architects Daughter', cursive;
+}
+
+.jumbotron {
+  background-color: #258EA6;
+  color: white;
+  border-bottom: 10px solid #E2B1B1;
+  text-transform: uppercase;
+}
+
+h1 {
+  text-shadow: 3px 3px darkslategray;
+  padding-left: 10px;
+}
+
+h2 {
+  color: #258EA6;
+  font-size: 30px;
+  text-align: center;
+}
+
+input {
+  display: none;
+}
+
+.show-input {
+  display: block;
+  background-color: white;
+  width: 306px;
+  height: 40px;
+  padding-left: 30px;
+  margin-left: 10px;
+  position: relative;
+  color: darkslategray;
+  font-weight: bold;
+}
+
+input:focus {
+  outline-color: #E2B1B1;
+}
+
+
+
+ul {
+  margin-top: 20px;
+}
+
+li {
+  list-style-type: none;
+  padding: 5px;
+  font-size: 20px;
+  color: darkslategray;
+  border-bottom: 1px dotted #E2B1B1;
+  font-weight: bold;
+}
+
+li:hover {
+  display: block;
+  border: 1px solid #549F93;
+  background-color: #258EA6;
+  color: white;
+}
+
+.check-box {
+  margin-right: 15px;
+  color: white;
+  background-color: #549F93;
+}
+
+.check-box:hover {
+  background-color: #E2B1B1;
+}
