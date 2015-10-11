@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var todo = require("../models/shoppingModel.js");
 
-//TODO need to GET POST DELETE
 
 router.get('/:name?', function(request, response, next){
     var name = request.params.name;
@@ -22,6 +21,7 @@ router.get('/:name?', function(request, response, next){
     }
 });
 
+
 router.post('/add', function(request, response, next){
     var listItem =new todo(request.body);
     console.log("List item is: ", listItem);
@@ -34,6 +34,7 @@ router.post('/add', function(request, response, next){
         response.sendStatus(200);
     })
 });
+
 
 router.delete('/remove/:name', function(request, response, next){
     var name = request.params.name;
@@ -50,9 +51,5 @@ router.delete('/remove/:name', function(request, response, next){
     });
 
 });
-//router.get('/note/:name?', function(request, response, next){
-//    var name = request.params.name;
-//    console.log("Added note: " + name);
-//});
 
 module.exports = router;
