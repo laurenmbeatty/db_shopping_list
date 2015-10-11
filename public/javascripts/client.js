@@ -26,12 +26,13 @@ $(document).ready(function () {
         if (e.which == 13) {
             var formData = $("input").val();
             console.log("This is the form data: ", formData);
+            var sendData={name:formData};
 
             $.ajax({
                 type: "POST",
                 url: "/shopping/add",
                 dataType: "text",
-                data: formData
+                data: sendData
             }).done(function (response){
                 console.log("Got a response!", response);
                 getData();
@@ -54,6 +55,14 @@ $(document).ready(function () {
 
             //clicking on checkbox removes list item with animation and puts focus back in text box
             $("li").on("click", function() {
+
+                var name = $(this).text();
+                $.ajax({
+                    type: "DELETE",
+                    url: "/shopping/remove/" + name
+                }).done(function(response){
+                    console.log("deleted");
+                });
                 $(this).animate({
                     opacity: 0.0,
                     paddingLeft: '+=40'

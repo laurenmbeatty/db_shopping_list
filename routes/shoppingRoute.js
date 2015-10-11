@@ -34,6 +34,22 @@ router.post('/add', function(request, response, next){
         response.sendStatus(200);
     })
 });
+
+router.delete('/remove/:name', function(request, response, next){
+    var name = request.params.name;
+    console.log(name);
+    todo.findOne({name:name}, function(err, todo){
+        if(err){
+            console.log("delete error");
+            next(err);
+        }else{
+            todo.remove(function(err){
+                if(err) throw err;
+            })
+        }
+    });
+
+});
 //router.get('/note/:name?', function(request, response, next){
 //    var name = request.params.name;
 //    console.log("Added note: " + name);
