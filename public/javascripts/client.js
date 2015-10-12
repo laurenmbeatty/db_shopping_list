@@ -1,9 +1,31 @@
 $(document).ready(function () {
     event.preventDefault();
 
+    //This function will add items in database to screen, but I didn't really want to use it
+    //Also, the delete function doesn't really work with these, but DOES work with items that I add
+    //I designed the app to be not really a way to store a list, just make it and use it
+
+    //var getData = function(){
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/shopping"
+    //    }).done(function(response){
+    //        console.log("This is the response: ", response);
+    //        for(var i=0; i<response.length; i++){
+    //            var $appendList = $("<li class='sortableItem'>" + "<button class='btn-xs check-box'>" +
+    //                "<span class='glyphicon glyphicon-ok'></span></button>" + response[i].name + "</li>");
+    //            $(".userList").append($appendList);
+    //
+    //        }
+    //    });
+    //};
+
+
+
     $(".toAppend").on('click', function () {
         $("input").addClass("show-input").fadeIn("slow").focus();
         $(".toAppend").fadeOut(1000);
+        //getData();
     });
 
     //on keystroke "enter," get text input value and append to ul;
@@ -49,7 +71,6 @@ $(document).ready(function () {
     //clicking on checkbox removes list item with animation and puts focus back in text box
     $(document).on("click", "li", function() {
         name = "";
-        //event.preventDefault();
         console.log("Almost done!");
         name = $(this).text();
         console.log(name);
@@ -61,6 +82,7 @@ $(document).ready(function () {
             $(this).remove();
         });
         $("input").focus();
+        //this deletes item from database
         $.ajax({
             type: "DELETE",
             url: "/shopping/remove/" + name
@@ -71,3 +93,4 @@ $(document).ready(function () {
     });
 
 });
+
